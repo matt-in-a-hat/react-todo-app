@@ -29,7 +29,19 @@ class App extends Component {
     const index = todos.indexOf(todo);
     todos[index] = { ...todos[index] };
     todos[index].completed = !todos[index].completed;
-    this.setState({ todos });
+
+//     if (this.state.todos.filter(todo => todo.completed).length === this.state.todos.length) {
+//       this.setState({toggleAllComplete: false});
+//     } else {
+//       this.setState({toggleAllComplete: true});
+//     }
+    
+    // this.setState({toggleAllComplete: this.state.todos.filter(todo => todo.completed).length !== this.state.todos.length});
+    this.setState({ 
+      todos: todos, 
+      toggleAllComplete: this.state.todos.filter(todo => todo.completed).length !== this.state.todos.length
+    });
+//     this.setState({ todos });
   };
   handleTodoToShow = val => {
     this.setState({ todosToShow: val });
